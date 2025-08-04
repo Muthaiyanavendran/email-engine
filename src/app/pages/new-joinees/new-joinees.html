@@ -1,0 +1,75 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li [class.active]="selectedPage === 'new-joinees'" (click)="selectPage('new-joinees')">New Joinees</li>
+      <li [class.active]="selectedPage === 'best-wishes'" (click)="selectPage('best-wishes')">Best Wishes</li>
+      <li [class.active]="selectedPage === 'employee-relations'" (click)="selectPage('employee-relations')">Employee Relations</li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- NEW JOINEES PAGE -->
+    <section *ngIf="selectedPage === 'new-joinees'" class="form-section">
+      <h2>Email Generator</h2>
+      <button disabled>Upload CSV</button>
+
+      <!-- Upload Photo -->
+      <div>
+        <label>Upload Photo:</label>
+        <input type="file" (change)="onPhotoUpload($event)">
+        <img *ngIf="photoPreview" [src]="photoPreview" alt="Photo" class="preview-img" />
+      </div>
+
+      <!-- Upload ID -->
+      <div>
+        <label>Upload ID (Image or PDF):</label>
+        <input type="file" (change)="onIdUpload($event)" />
+      </div>
+
+      <!-- Form Inputs -->
+      <div class="form-grid">
+        <div class="form-group" *ngFor="let field of joineeFields">
+          <input type="text" [id]="field.id" required [(ngModel)]="newJoinee[field.model]" />
+          <label [for]="field.id">{{ field.label }}</label>
+        </div>
+      </div>
+
+      <button class="add-button" (click)="addJoinee()">Add New Joinee</button>
+    </section>
+
+    <!-- Preview -->
+    <section *ngIf="selectedPage === 'new-joinees'" class="preview-section">
+      <h3>Email Preview</h3>
+      <div class="preview-box">
+        <img *ngIf="photoPreview" [src]="photoPreview" class="preview-photo" alt="User Photo" />
+        <p><strong>Welcome {{ newJoinee['name'] }}</strong></p>
+        <p>Role: {{ newJoinee['role'] }}</p>
+        <p>Location: {{ newJoinee['location'] }}</p>
+        <p>Buddy: {{ newJoinee['buddy'] }}</p>
+
+        <h4>Uploaded ID:</h4>
+        <div class="scroll-box">
+          <img *ngIf="uploadedIdPreview && !isPdf" [src]="uploadedIdPreview" alt="Uploaded ID" />
+          <embed *ngIf="uploadedIdPreview && isPdf" [src]="uploadedIdPreview" type="application/pdf" width="100%" height="300px" />
+        </div>
+      </div>
+    </section>
+
+    <!-- BEST WISHES PAGE -->
+    <section *ngIf="selectedPage === 'best-wishes'" class="form-section">
+      <h2>Best Wishes</h2>
+      <p>This section will contain content for best wishes (farewell, promotion, etc).</p>
+      <!-- Add input fields or editor here -->
+    </section>
+
+    <!-- EMPLOYEE RELATIONS PAGE -->
+    <section *ngIf="selectedPage === 'employee-relations'" class="form-section">
+      <h2>Employee Relations</h2>
+      <p>Use this section for employee HR templates, concerns, or other details.</p>
+      <!-- Add input fields or editor here -->
+    </section>
+  </main>
+</div>
