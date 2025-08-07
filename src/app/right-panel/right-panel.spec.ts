@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewJoineesComponent } from './new-joinees';
+import { RightPanel } from './right-panel';
 
-describe('NewJoinees', () => {
-  let component: NewJoineesComponent;
-  let fixture: ComponentFixture<NewJoineesComponent>;
+describe('RightPanel', () => {
+  let component: RightPanel;
+  let fixture: ComponentFixture<RightPanel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NewJoineesComponent]
+      imports: [RightPanel]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NewJoineesComponent);
+    fixture = TestBed.createComponent(RightPanel);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,7 +4,8 @@
     <ul>
       <li [class.active]="selectedPage === 'new-joinees'" (click)="selectPage('new-joinees')">New Joinees</li>
       <li [class.active]="selectedPage === 'best-wishes'" (click)="selectPage('best-wishes')">Best Wishes</li>
-      <li [class.active]="selectedPage === 'employee-relations'" (click)="selectPage('employee-relations')">Employee Relations</li>
+      <li [class.active]="selectedPage === 'employee-relations'" (click)="selectPage('employee-relations')">Employee
+        Relations</li>
     </ul>
   </aside>
 
@@ -23,11 +24,14 @@
         <img *ngIf="photoPreview" [src]="photoPreview" alt="Photo" class="preview-img" />
       </div>
 
+      <button (click)="newJoinee['photo'] = ''">Remove Photo</button>
+
+
       <!-- Upload ID -->
-      <div>
+      <!-- <div>
         <label>Upload ID (Image or PDF):</label>
         <input type="file" (change)="onIdUpload($event)" />
-      </div>
+      </div> -->
 
       <!-- Form Inputs -->
       <div class="form-grid">
@@ -40,23 +44,218 @@
       <button class="add-button" (click)="addJoinee()">Add New Joinee</button>
     </section>
 
-    <!-- Preview -->
-    <section *ngIf="selectedPage === 'new-joinees'" class="preview-section">
-      <h3>Email Preview</h3>
-      <div class="preview-box">
-        <img *ngIf="photoPreview" [src]="photoPreview" class="preview-photo" alt="User Photo" />
-        <p><strong>Welcome {{ newJoinee['name'] }}</strong></p>
-        <p>Role: {{ newJoinee['role'] }}</p>
-        <p>Location: {{ newJoinee['location'] }}</p>
-        <p>Buddy: {{ newJoinee['buddy'] }}</p>
 
-        <h4>Uploaded ID:</h4>
-        <div class="scroll-box">
-          <img *ngIf="uploadedIdPreview && !isPdf" [src]="uploadedIdPreview" alt="Uploaded ID" />
-          <embed *ngIf="uploadedIdPreview && isPdf" [src]="uploadedIdPreview" type="application/pdf" width="100%" height="300px" />
-        </div>
-      </div>
-    </section>
+    <!-- Display fields with two-way binding -->
+    <tr>
+      <td dir="ltr" align="center">
+        <table
+          style="background-color: rgb(41, 41, 41) !important; width: 600px; border-spacing: 0px; border-collapse: collapse; box-sizing: border-box;"
+          cellpadding="0" cellspacing="0" dir="ltr" align="center" data-ogsb="white">
+          <tbody>
+            <tr>
+              <td style="color:white;text-align:center;height:250px;" dir="ltr">
+                <div style="padding:60px 30px;">
+                  <h1 style="color:white;font-size:32px;text-align:center;margin:0;" dir="ltr"><span
+                      style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont;">Welcome
+                      to Nihilent</span></h1>
+                  <p style="color:#F0F0F0;text-align:center;margin:10px 0;" dir="ltr"><span
+                      style="font-size: 11pt; font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont;">Discover
+                      the next big thing</span></p>
+                  <table style="border-spacing:0;border-collapse:collapse;margin:20px auto;box-sizing:border-box;"
+                    cellpadding="0" cellspacing="0" dir="ltr" align="center">
+                    <tbody>
+                      <tr>
+                        <td dir="ltr" align="center">
+                          <div style="color: white; font-size: 16px; font-family: sans-serif, serif, EmojiFont;"
+                            dir="ltr"><span style="background-color: rgb(99, 66, 0) !important; line-height: 25px;"
+                              data-ogsb="rgb(243, 190, 46)"><b><a
+                                  style="color: white; text-align: center; background-color: rgb(99, 66, 0) !important; display: inline-block; width: 120px; text-decoration: none; border-radius: 20px; padding: 10px;"
+                                  originalsrc="https://www.nihilent.com/" data-auth="NotApplicable"
+                                  rel="noopener noreferrer" target="_blank"
+                                  href="https://apc01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.nihilent.com%2F&amp;data=05%7C02%7Cmuthaiyanavendran.n%40nihilent.com%7Cb7074c62c6ec4d5f302e08ddd353fd62%7C8ee0f3e4b7884efabd84e6bfe7fe9943%7C0%7C0%7C638899079879584397%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=ASs0EoE%2FvNbMEtGUyCuUuFZiZivQ2Rn%2B29Q4%2BgV%2FbeA%3D&amp;reserved=0"
+                                  data-linkindex="0"
+                                  title="Original URL: https://www.nihilent.com/. Click or tap if you trust this link."
+                                  data-ogsb="rgb(243, 190, 46)">Get Started</a></b></span></div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-right:30px;padding-left:30px;" dir="ltr">
+                <table
+                  style="background-color: rgb(41, 41, 41) !important; width: 100%; border-spacing: 0px; border-collapse: collapse; box-sizing: border-box;"
+                  cellpadding="0" cellspacing="0" dir="ltr" data-ogsb="white">
+                  <tbody>
+                    <tr>
+                      <td style="padding-top:20px;padding-right:20px;padding-left:20px;" dir="ltr" align="left">
+                        <table style="width:100%;border-spacing:0;border-collapse:collapse;box-sizing:border-box;"
+                          cellpadding="0" cellspacing="0" dir="ltr">
+                          <tbody>
+                            <tr>
+                              <td style="vertical-align:top;width:560px;" dir="ltr" align="center">
+                                <table
+                                  style="width:100%;border-spacing:0;border-collapse:collapse;box-sizing:border-box;"
+                                  cellpadding="0" cellspacing="0" dir="ltr">
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding-bottom:25px;" dir="ltr" align="left">
+                                        <h3
+                                          style="color: rgb(215, 215, 215) !important; font-size: 26px; font-family: Arial, &quot;helvetica neue&quot;, Helvetica, sans-serif; font-weight: normal; margin: 0px; letter-spacing: 0px; line-height: 31.2px;"
+                                          dir="ltr" data-ogsc="rgb(51, 51, 51)">Meet Our New Joiners</h3>
+                                        <p style="color: rgb(215, 215, 215) !important; font-size: 14px; font-family: Arial, &quot;helvetica neue&quot;, Helvetica, sans-serif; margin: 0px; letter-spacing: 0px; line-height: 21px;"
+                                          dir="ltr" data-ogsc="rgb(51, 51, 51)"><span
+                                            style="letter-spacing: 0px; color: rgb(215, 215, 215) !important;"
+                                            data-ogsc="">We're thrilled to welcome our latest team members joining us
+                                            this month!</span></p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top:20px;padding-right:20px;padding-left:20px;" dir="ltr" align="left">
+                        <table style="border-spacing:0;border-collapse:collapse;box-sizing:border-box;" cellpadding="0"
+                          cellspacing="0" dir="ltr" align="left">
+                          <tbody>
+                            <tr>
+                              <td style="vertical-align:top;" dir="ltr" align="center">
+                                <table
+                                  style="width:100%;border-spacing:0;border-collapse:collapse;box-sizing:border-box;"
+                                  cellpadding="0" cellspacing="0" dir="ltr">
+                                  <tbody>
+                                    <tr>
+                                      <td dir="ltr" align="center">
+                                        <span
+                                          style="color: rgb(255, 255, 255) !important; font-size: 14px; font-family: Aptos, Calibri, Helvetica, sans-serif;">
+                                          <img *ngIf="newJoinee['photo']" [src]="newJoinee['photo']"
+                                            style="display: block; width: 180px;" alt="Uploaded Photo" />
+                                        </span>
+                                      </td>
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table style="border-spacing:0;border-collapse:collapse;box-sizing:border-box;" cellpadding="0"
+                          cellspacing="0" dir="ltr" align="right">
+                          <tbody>
+                            <tr>
+                              <td dir="ltr" align="left">
+                                <table
+                                  style="width:100%;border-spacing:0;border-collapse:collapse;box-sizing:border-box;"
+                                  cellpadding="0" cellspacing="0" dir="ltr">
+                                  <tbody>
+                                    <tr>
+                                      <!-- Left side photo -->
+                                      <!-- <td dir="ltr" align="center" style="width: 180px;">
+                                        <img *ngIf="newJoinee['photo']" [src]="newJoinee['photo']"
+                                          style="width: 180px; height: auto;" alt="Uploaded Photo" />
+                                      </td> -->
+
+                                      <!-- Right side preview details -->
+                                      <td dir="ltr" align="left">
+                                        <div style="padding: 20px; background-color: #292929; color: white;">
+                                          <p><strong>Name:</strong> {{ newJoinee['name'] }}</p>
+                                          <p><strong>Designation:</strong> {{ newJoinee['role'] }}</p>
+                                          <p><strong>Educational Qualifications:</strong> {{ newJoinee['qualification']
+                                            }}</p>
+                                          <p><strong>Previous Company:</strong> {{ newJoinee['previousCompany'] }}</p>
+                                          <p><strong>Group:</strong> {{ newJoinee['group'] }}</p>
+                                          <p><strong>Location:</strong> {{ newJoinee['location'] }}</p>
+                                          <p><strong>Associate ID:</strong> {{ newJoinee['associateId'] }}</p>
+                                          <p><strong>Skills:</strong> {{ newJoinee['skills'] }}</p>
+                                          <p><strong>Buddy:</strong> {{ newJoinee['buddy'] }}</p>
+                                          <p><strong>Buddy Location:</strong> {{ newJoinee['buddyLocation'] }}</p>
+                                        </div>
+                                      </td>
+                                    </tr>
+
+
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:20px;" dir="ltr" align="center">
+                        <table
+                          style="width:100%;height:100%;border-spacing:0;border-collapse:collapse;box-sizing:border-box;"
+                          cellpadding="0" cellspacing="0" dir="ltr"></table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="color: rgb(174, 174, 174) !important; text-align: center; padding: 30px;" dir="ltr"
+                data-ogsc="rgb(136, 136, 136)">
+                <div
+                  style="font-size: 14px; font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; text-align: center; color: rgb(174, 174, 174) !important;"
+                  dir="ltr" data-ogsc="">© 2025 Nihilent. All rights reserved.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Display fields with two-way binding -->
+    <!-- <td dir="ltr" align="left">
+  <table style="width:100%; border-spacing:0; border-collapse:collapse;">
+    <tbody>
+      <tr>
+        <td dir="ltr" align="left">
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Educational Qualifications:
+            <input type="text" [(ngModel)]="educationalQualifications" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Previous Company:
+            <input type="text" [(ngModel)]="previousCompany" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Group:
+            <input type="text" [(ngModel)]="group" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Location:
+            <input type="text" [(ngModel)]="location" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Associate ID:
+            <input type="text" [(ngModel)]="associateId" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Skills:
+            <input type="text" [(ngModel)]="skills" style="background: none; border: none; color: white;" />
+          </p>
+          <p style="color: rgb(215, 215, 215); font-size: 14px; font-family: Arial;">
+            Buddy:
+            <input type="text" [(ngModel)]="buddy" style="background: none; border: none; color: white;" /><br />
+            Location:
+            <input type="text" [(ngModel)]="buddyLocation" style="background: none; border: none; color: white;" />
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</td> -->
+
 
     <!-- BEST WISHES PAGE -->
     <section *ngIf="selectedPage === 'best-wishes'" class="form-section">

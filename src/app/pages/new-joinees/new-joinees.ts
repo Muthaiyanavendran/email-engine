@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-new-joinees',
@@ -48,16 +48,24 @@ export class NewJoineesComponent {
   uploadedIdPreview: string | ArrayBuffer | null = null;
   isPdf: boolean = false;
 
-  // Handle photo upload
-  onPhotoUpload(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => (this.photoPreview = reader.result);
-      reader.readAsDataURL(file);
-    }
+ 
+
+onPhotoUpload(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if (typeof result === 'string') {
+        this.newJoinee['photo'] = result;
+      }
+    };
+    reader.readAsDataURL(file);
   }
+}
+
+
+
 
   // Handle ID upload (image or PDF)
   onIdUpload(event: Event): void {
